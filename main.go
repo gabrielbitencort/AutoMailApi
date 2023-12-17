@@ -1,6 +1,9 @@
 package main
 
-import "github.com/Gabriel-Bitencort/AutoMailApi.git/config"
+import (
+	"github.com/Gabriel-Bitencort/AutoMailApi.git/config"
+	"github.com/Gabriel-Bitencort/AutoMailApi.git/router"
+)
 
 var (
 	logger *config.Logger
@@ -17,4 +20,5 @@ func main() {
 	}
 
 	// Initialize Router
+	router.Initialize()
 }
