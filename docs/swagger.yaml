@@ -22,6 +22,13 @@ definitions:
       message:
         type: string
     type: object
+  handler.ShowUserResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.UserRegisterResponse'
+      message:
+        type: string
+    type: object
   schemas.UserRegisterResponse:
     properties:
       createdAt:
@@ -43,6 +50,34 @@ info:
   contact: {}
 paths:
   /register:
+    get:
+      consumes:
+      - application/json
+      description: Show a user register
+      parameters:
+      - description: User identification
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.ShowUserResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+      summary: Show user
+      tags:
+      - Register
     post:
       consumes:
       - application/json
