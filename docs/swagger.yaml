@@ -1,0 +1,75 @@
+definitions:
+  handler.ErrorResponse:
+    properties:
+      errorCode:
+        type: string
+      message:
+        type: string
+    type: object
+  handler.RegisterUserRequest:
+    properties:
+      email:
+        type: string
+      name:
+        type: string
+      password_hash:
+        type: string
+    type: object
+  handler.RegisterUserResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.UserRegisterResponse'
+      message:
+        type: string
+    type: object
+  schemas.UserRegisterResponse:
+    properties:
+      createdAt:
+        type: string
+      deletedAt:
+        type: string
+      email:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      password_hash:
+        type: string
+      updatedAt:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /register:
+    post:
+      consumes:
+      - application/json
+      description: Register a new user
+      parameters:
+      - description: Request body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/handler.RegisterUserRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.RegisterUserResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+      summary: Register user
+      tags:
+      - Register
+swagger: "2.0"
