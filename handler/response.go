@@ -40,7 +40,7 @@ type ShowUserResponse struct {
 	Message string                       `json:"message"`
 	Data    schemas.UserRegisterResponse `json:"data"`
 }
-type ListUserResponse struct {
+type ListUsersResponse struct {
 	Message string                         `json:"message"`
 	Data    []schemas.UserRegisterResponse `json:"data"`
 }

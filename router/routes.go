@@ -18,6 +18,9 @@ func initializeRoutes(router *gin.Engine) {
 	{
 		v1.GET("/register", handler.ShowUserHandler)
 		v1.POST("/register", handler.RegisterUserHandler)
+		v1.DELETE("/register", handler.DeleteUserHandler)
+		v1.PUT("register", handler.UpdateUserHandler)
+		v1.GET("register", handler.ListUsersHandler)
 	}
 
 	// Initialize Swagger
